@@ -1,6 +1,7 @@
 import React from 'react';
 import './Home.css';
-import banner_right_image from '../../../assets/images/banner-right-image.png'
+import banner_right_image from '../../../assets/images/banner-right-image.png';
+import { Fade } from "react-awesome-reveal";
 export default function Home() {
   return (
     <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
@@ -10,6 +11,7 @@ export default function Home() {
           <div class="row">
             <div class="col-lg-6 align-self-center">
               <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
+                <Fade left duration={1000}>
                 <div class="row">
                   <div class="col-lg-4 col-sm-4">
                     <div class="info-stat">
@@ -38,12 +40,15 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
+                </Fade>
               </div>
             </div>
             <div class="col-lg-6">
+              <Fade right duration={1000}>
               <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
                 <img src={banner_right_image} alt=""/>
               </div>
+              </Fade>
             </div>
           </div>
         </div>

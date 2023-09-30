@@ -1,7 +1,8 @@
-import React from 'react'
-import service_icon_03 from '../../../assets/images/service-icon-03.png'
-import service_icon_02 from '../../../assets/images/service-icon-02.png'
-import service_icon_01 from '../../../assets/images/service-icon-01.png'
+import React from 'react';
+import { Link , Outlet} from 'react-router-dom';
+import service_icon_03 from '../../../assets/images/service-icon-03.png';
+import service_icon_02 from '../../../assets/images/service-icon-02.png';
+import service_icon_01 from '../../../assets/images/service-icon-01.png';
 import './Services.css';
 export default function Services() {
   return (
@@ -20,6 +21,7 @@ export default function Services() {
       <div class="row">
         <div class="col-lg-4">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
+             <Link to='Service'>
             <div class="row">
               <div class="col-lg-4">
                 <div class="icon">
@@ -33,10 +35,13 @@ export default function Services() {
                 </div>
               </div>
             </div>
-          </div>
+             </Link>
+             <Outlet/>
+            </div>
         </div>
         <div class="col-lg-4">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
+          <Link to='digital'>
             <div class="row">
               <div class="col-lg-4">
                 <div class="icon">
@@ -50,10 +55,12 @@ export default function Services() {
                 </div>
               </div>
             </div>
-          </div>
+            </Link>
+            </div>
         </div>
         <div class="col-lg-4">
           <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
+          <Link to='business'>
             <div class="row">
               <div class="col-lg-4">
                 <div class="icon">
@@ -67,6 +74,7 @@ export default function Services() {
                 </div>
               </div>
             </div>
+          </Link>
           </div>
         </div>
         <div class="col-lg-4">
@@ -122,6 +130,7 @@ export default function Services() {
         </div>
       </div>
     </div>
+    <Outlet/>
   </div>
   )
 }

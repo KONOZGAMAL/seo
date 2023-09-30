@@ -1,15 +1,19 @@
 import React from 'react';
 import './About.css';
 import about_left from '../../../assets/images/about-left-image.png';
+import { Fade } from "react-awesome-reveal";
 export default function AboutUs() {
   return (
     <div id="about" class="about about-us section">
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+        <Fade left duration={1000}>
+          {/* <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s"> */}
+          <div class="left-image">
             <img src={about_left} alt=""/>
           </div>
+        </Fade>
         </div>
         <div class="col-lg-6 align-self-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
           <div class="section-heading">
