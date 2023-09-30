@@ -2,7 +2,6 @@ import {React , useState } from 'react';
 import { NavLink } from 'react-router-dom';
  import  './Header.css';
 import logo from '../../assets/images/logo-icon.png';
-import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 export default function Header() {
   const activeElement = ({isActive})=>{
     return {
@@ -10,9 +9,6 @@ export default function Header() {
    }
   }
   const [show , setShow] = useState(true);
-  const showMenu = ()=>{
-    setShow(current => !current)
-  }
   return (
    <header className="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
     <div className="container">
@@ -25,18 +21,24 @@ export default function Header() {
             </a>
             {/* <!-- ***** Logo End ***** --> */}
             {/* <!-- ***** Menu Start ***** --> */}
-               <ul className="nav">
+               <ul className="nav" style={show? { display: "block" } : { display: "none" }}>
               <li className="scroll-to-section"><NavLink style={activeElement} to="/" >Home</NavLink></li>
               <li className="scroll-to-section"><NavLink style={activeElement} to="/about">About Us</NavLink></li>
               <li className="scroll-to-section"><NavLink style={activeElement} to="/services">Services</NavLink></li>
               <li className="scroll-to-section"><NavLink style={activeElement} to="/contact">Contact Us</NavLink></li> 
               <li className="scroll-to-section"><div class="main-blue-button"><NavLink to="/contact">Get Your Quote</NavLink></div></li> 
             </ul> 
-            {
-              show ?
-              <a className='menu-trigger' href='/' onClick={showMenu}>
-                <span>Menu</span> </a>:<CloseOutlinedIcon/>
-            }
+            {show ? (
+                <a href='/' className="menu-trigger active"
+                  onClick={() => setShow(false)}
+                >
+                  <span>Menu</span>
+                </a>
+              ) : (
+                <a href='/' className="menu-trigger" onClick={() => setShow(true)}>
+                  <span>Menu</span>
+                </a>
+              )}
             {/* <!-- ***** Menu End ***** --> */}
           </nav>
         </div>
@@ -45,162 +47,5 @@ export default function Header() {
   </header>
   )
 }
-///////////////////////////////////////////////
 
 
-
-
-/////////////////////////////////////
-// import * as React from 'react';
-//  import { NavLink } from 'react-router-dom'; 
-//   import  './Header.css';
-//  import logo from '../../assets/images/logo-icon.png'
-
-// import AppBar from '@mui/material/AppBar';
-// import Box from '@mui/material/Box';
-// import Toolbar from '@mui/material/Toolbar';
-// import IconButton from '@mui/material/IconButton';
-// import Typography from '@mui/material/Typography';
-// import Menu from '@mui/material/Menu';
-// import MenuIcon from '@mui/icons-material/Menu';
-// import Container from '@mui/material/Container';
-// import Button from '@mui/material/Button';
-// import Tooltip from '@mui/material/Tooltip';
-// import MenuItem from '@mui/material/MenuItem';
-// import AdbIcon from '@mui/icons-material/Adb';
-
-// const pages = ['Home', 'About Us', 'Services','Contact Us'];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
-// function Header() {
-//   const [anchorElNav, setAnchorElNav] = React.useState(null);
-//   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-//   const handleOpenNavMenu = (event) => {
-//     setAnchorElNav(event.currentTarget);
-//   };
-//   const handleOpenUserMenu = (event) => {
-//     setAnchorElUser(event.currentTarget);
-//   };
-
-//   const handleCloseNavMenu = () => {
-//     setAnchorElNav(null);
-//   };
-
-//   const handleCloseUserMenu = () => {
-//     setAnchorElUser(null);
-//   };
-
-//   return (
-//     <AppBar position="static" className='background-header'>
-//       <Container maxWidth="xl">
-//         <Toolbar disableGutters>
-//           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-//           <Typography
-//             variant="h6"
-//             noWrap
-//             component="a"
-//             href="#app-bar-with-responsive-menu"
-//             sx={{
-//               mr: 2,
-//               display: { xs: 'none', md: 'flex' },
-//               fontFamily: 'monospace',
-//               fontWeight: 700,
-//               letterSpacing: '.3rem',
-//               color: 'inherit',
-//               textDecoration: 'none',
-//             }}
-//           >
-//             LOGO
-//           </Typography>
-
-//           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-//             <IconButton
-//               size="large"
-//               aria-label="account of current user"
-//               aria-controls="menu-appbar"
-//               aria-haspopup="true"
-//               onClick={handleOpenNavMenu}
-//               color="inherit"
-//             >
-//               <MenuIcon />
-//             </IconButton>
-//             <Menu
-//               id="menu-appbar"
-//               anchorEl={anchorElNav}
-//               anchorOrigin={{
-//                 vertical: 'bottom',
-//                 horizontal: 'left',
-//               }}
-//               keepMounted
-//               transformOrigin={{
-//                 vertical: 'top',
-//                 horizontal: 'left',
-//               }}
-//               open={Boolean(anchorElNav)}
-//               onClose={handleCloseNavMenu}
-//               sx={{
-//                 display: { xs: 'block', md: 'none' },
-//               }}
-//             >
-//               {pages.map((page) => (
-//                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-//                   <Typography textAlign="center">{page}</Typography>
-//                 </MenuItem>
-//               ))}
-//             </Menu>
-//           </Box>
-//           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-//           <Typography>
-//               <a href="index.html" className="logo">
-//                <h4>SEO Dream <img src={logo} alt="logo"/></h4>
-//             </a>
-//           </Typography>
-//           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-//             {pages.map((page) => (
-//               <Button
-//                 key={page}
-//                 onClick={handleCloseNavMenu}
-//                 sx={{ my: 2, color: 'white', display: 'block' }}
-//               >
-//                 {page}
-//               </Button>
-//             ))}
-//           </Box>
-
-//           <Box sx={{ flexGrow: 0 }}>
-//             <Tooltip title="Open settings">
-//               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-//                 {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-//                 <div class="main-blue-button"><NavLink to="/contact">Get Your Quote</NavLink></div>
-//               </IconButton>
-//             </Tooltip>
-//             <Menu
-//               sx={{ mt: '45px' }}
-//               id="menu-appbar"
-//               anchorEl={anchorElUser}
-//               anchorOrigin={{
-//                 vertical: 'top',
-//                 horizontal: 'right',
-//               }}
-//               keepMounted
-//               transformOrigin={{
-//                 vertical: 'top',
-//                 horizontal: 'right',
-//               }}
-//               open={Boolean(anchorElUser)}
-//               onClose={handleCloseUserMenu}
-//             >
-//               {settings.map((setting) => (
-//                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-//                   <Typography textAlign="center">{setting}</Typography>
-//                 </MenuItem>
-//               ))}
-//             </Menu>
-//           </Box>
-//         </Toolbar>
-//       </Container>
-//     </AppBar>
-//   );
-// }
-// export default Header;
